@@ -4,8 +4,6 @@ public abstract class Employee implements Serializable
 {
         private String name;
         private double wage;
-        private boolean hourly = false;
-        private boolean salaried = false;
 
         protected Employee(String name, double wage)
         {

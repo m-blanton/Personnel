@@ -1,0 +1,159 @@
+import java.util.*;
+import java.util.Scanner;
+import java.io.*;
+
+
+public class Personnel
+{
+//      private static String input;
+        private static ArrayList<Employee> arr =  new ArrayList<Employee>();
+
+        public static void main (String[] args)
+        {
+                runMenu();
+        }
+
+        public static void printMenu()
+        {
+                System.out.println("----------------------------------");
+                System.out.println("|Commands: n - New employee      |");
+                System.out.println("|          c - Compute paychecks |");
+                System.out.println("|          p - Print records     |");
+                System.out.println("|          r - Rasie Wages       |");
+                System.out.println("|          q - quit              |");
+                System.out.println("----------------------------------");
+        }
+
+        public static void runMenu()
+        {
+                Scanner in = new Scanner(System.in);
+                String input = null;
+                printMenu();
+                System.out.print("Enter command: ");
+                input = in.nextLine();
+
+                if(input.equalsIgnoreCase("n"))
+                        runN();
+                else if(input.equalsIgnoreCase("c"))
+                        runC();
+                else if(input.equalsIgnoreCase("r"))
+                        runR();
+                else if(input.equalsIgnoreCase("p"))
+                        runP();
+                else if(input.equalsIgnoreCase("q"))
+                        runQ();
+                else
+                {
+                        System.out.println("Command not recognized; please try again.");
+                        in.nextLine();
+                        runMenu();
+                }
+        }
+
+        public static void runN()
+        {
+                Scanner in = new Scanner(System.in);
+                String empName;
+                double empWage;
+                String type;
+
+                System.out.print("Enter the name of new employee: ");
+                empName = in.nextLine();
+                System.out.print("Hourly (h) or salaried (s): ");
+                type = in.nextLine();
+                if(type.equalsIgnoreCase("h"))
+                        System.out.print("Enter hourly wage: ");
+                else if(type.equalsIgnoreCase("s"))
+                        System.out.print("Enter annual salary: ");
+                else
+                {
+                        System.out.print("Must chose 'h' or 's'. Try again");
+                        in.nextLine();
+                        runN();
+                }
+                empWage = in.nextDouble();
+
+                if(type.equalsIgnoreCase("h"))
+                {
+                        HourlyEmployee emp = new HourlyEmployee(empName, empWage);
+                        arr.add(emp);
+                }
+                else
+                {
+                        SalariedEmployee emp = new SalariedEmployee(empName, empWage);
+                        arr.add(emp);
+                }
+
+                System.out.println("Your employee has been added. Hit any key to continue");
+                in.nextLine();
+                in.nextLine();
+                runMenu();
+        }
+
+        public static void runC()
+        {
+                Scanner in = new Scanner(System.in);
+                double hr = 0;
+                double result;
+
+                for(int i = 0; i<arr.size(); i++)
+                {
+                	if(arr.get(i).isHourly())
+                	{
+                       System.out.println("Enter number of hours worked by " + arr.get(i).getName());
+                       hr = in.nextDouble();
+                       System.out.println("Pay for " + arr.get(i).getName() + ": $" + arr.get(i).computePay(hr) + "0 this week");
+                	}
+                	else
+                	{
+                		result = arr.get(i).computePay(hr);
+                		result = Math.round(result * 100d) / 100d;
+                		System.out.println("Pay for " + arr.get(i).getName() +  ": $" + result + " per week");
+                	}
+                }
+
+                System.out.println("Hit any key to continue");
+                in.nextLine();
+                in.nextLine();
+                runMenu();
+        }
+
+        public static void runR()
+        {
+                Scanner in = new Scanner(System.in);
+                double result;
+
+                System.out.println("Enter percentage increase: ");
+                double per = in.nextDouble();
+                for(int i = 0; i < arr.size(); i++)
+                {
+                        result = arr.get(i).getWage() * (per/100) + arr.get(i).getWage();
+                        System.out.println(arr.get(i).getName() + "                $" + result);
+                        arr.get(i).setWage(result);
+                }
+
+                System.out.println("Hit any key to continue");
+                in.nextLine();
+                in.nextLine();
+                runMenu();
+        }
+
+        public static void runP()
+        {
+                Scanner in = new Scanner(System.in);
+
+                for(int i = 0; i < arr.size(); i++)
+                {
+                        System.out.println(arr.get(i).toString());
+                }
+
+                System.out.println("Hit any key to continue");
+                in.nextLine();
+                runMenu();
+        }
+
+        public static void runQ()
+        {
+                System.exit(0);
+        }
+}

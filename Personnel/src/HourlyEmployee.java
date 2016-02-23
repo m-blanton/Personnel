@@ -1,3 +1,5 @@
+// A class that represents Employees who are paid on an hourly basis.
+
 import java.io.Serializable;
 
 public class HourlyEmployee extends Employee implements Serializable
@@ -12,6 +14,8 @@ public class HourlyEmployee extends Employee implements Serializable
                 hourlyWage = wage;
         }
 
+// If HourlyEmployees work more than 40 hours per week, they receive overtime pay. For each hour over
+//  40 they work each week, they receive 1.5 times their ususal pay.
         public double computePay(double hours)
         {
                 double standard = 0;

@@ -1,3 +1,5 @@
+// A class that represent Employees payed that are paid a yearly salary. Extends Employees.
+
 import java.io.Serializable;
 
 public class SalariedEmployee extends Employee implements Serializable
@@ -21,6 +23,7 @@ public class SalariedEmployee extends Employee implements Serializable
                 return salary;
         }
 
+// Weekly pay is computed by simply dividing yearly salary by 52.
         public double computePay(double hours)
         {
                 double result = salary/52;

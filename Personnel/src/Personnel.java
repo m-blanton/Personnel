@@ -1,10 +1,13 @@
+// A program to create a list of Employees. Employees can be either salaried or hourly, and information about their wages
+// is stored according to what type each Employee is. Calculates weekly paychecks, as well as offering the option to raise wages
+// by a specified percentage.
+
 import java.util.*;
 import java.util.Scanner;
 
-
 public class Personnel
 {
-//      private static String input;
+        // Initializes an ArrayList to hold Employees
         private static ArrayList<Employee> arr =  new ArrayList<Employee>();
 
         public static void main (String[] args)
@@ -12,6 +15,7 @@ public class Personnel
                 runMenu();
         }
 
+        // Prints a simple menu 
         public static void printMenu()
         {
                 System.out.println("----------------------------------");
@@ -23,6 +27,7 @@ public class Personnel
                 System.out.println("----------------------------------");
         }
 
+        // Prompts the user to select an option from the menu, then exectutes the selection
         public static void runMenu()
         {
                 Scanner in = new Scanner(System.in);
@@ -49,6 +54,7 @@ public class Personnel
                 }
         }
 
+        // Creates a new Employee
         public static void runN()
         {
                 Scanner in = new Scanner(System.in);
@@ -89,6 +95,7 @@ public class Personnel
                 runMenu();
         }
 
+        // Returns the weekly paycheck of each Employee
         public static void runC()
         {
                 Scanner in = new Scanner(System.in);
@@ -117,6 +124,7 @@ public class Personnel
                 runMenu();
         }
 
+        // Raises each Employee's wage by a specified percentage
         public static void runR()
         {
                 Scanner in = new Scanner(System.in);
@@ -137,6 +145,7 @@ public class Personnel
                 runMenu();
         }
 
+        // Prints each Employee and their wage information
         public static void runP()
         {
                 Scanner in = new Scanner(System.in);
@@ -151,6 +160,7 @@ public class Personnel
                 runMenu();
         }
 
+        // Exits the program
         public static void runQ()
         {
                 System.exit(0);

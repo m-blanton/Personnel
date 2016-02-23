@@ -1,3 +1,5 @@
+// Abstract class that HourlyEmployee and SalariedEmployee inherit from
+
 import java.io.Serializable;
 
 public abstract class Employee implements Serializable

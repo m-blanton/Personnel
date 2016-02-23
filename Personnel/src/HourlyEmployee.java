@@ -1,4 +1,4 @@
-// A class that represents Employees who are paid on an hourly basis.
+// A class that represents Employees who are paid on an hourly basis. Extends Employee.
 
 import java.io.Serializable;
 
